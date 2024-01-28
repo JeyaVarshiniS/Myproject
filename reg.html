@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reg.css">
+    <title>WRIGHTERS HUB Registration</title>
+</head>
+<body>
+    <form  onsubmit="return validateForm()">
+        <div class="name-container">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name">
+    
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+        </div>
+
+        <div class="name-container">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" >
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password">
+            <i class="fa-solid fa-eye" id="eye"></i>
+            <span id="passwordError" class="error"></span>
+        </div>
+        
+        <div class="name-container">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email">
+
+            <label for="dob">DOB</label>
+            <input type="text" id="dob" name="dob" pattern="\d{2}/\d{2}/\d{4}" placeholder="mm/dd/yyyy" >
+        </div>
+
+        <div class="name-container">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" >
+                <option value="select">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+    
+            <label for="country">Country</label>
+            <select id="country" name="country" >
+                <option value="select">Select Country</option>
+                <option value="India">India</option>
+                <option value="america">America</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Australia">Australia</option>
+                <option value="Asia">Asia</option>
+                <option value="Russia">Russia</option>
+                <option value="Japan">Japan</option>
+                <option value="China">China</option>
+            </select>
+        </div>
+    
+        <div class="name-container">
+            <label for="religion">Religion</label>
+            <select id="religion" name="religion">
+                <option value="select">Select Religion</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Muslim">Muslim</option>
+                <option value="Christian">hristian</option>
+                <option value="Christian">Christian</option>
+            </select>
+
+            <label for="community">Community</label>
+            <select id="community" name="community" required>
+                <option value="select">Select Community</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="MBC">MBC</option>
+                <option value="BC">BC</option>
+                <option value="OC">OC</option>
+            </select>
+        </div>
+    
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="4" placeholder="Type your address here..."></textarea>
+
+        <label for="writingExperience">Do you have any writing experience?</label>
+        <div class="name-container">
+            <input type="radio" id="yesExperience" name="writingExperience" value="yes" >
+            <label for="yesExperience">Yes</label>
+            <input type="radio" id="noExperience" name="writingExperience" value="no">
+            <label for="noExperience">No</label>
+        </div>
+
+        <button type="submit">Next</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            // Get the password input and error span elements
+            var passwordInput = document.getElementById("password");
+            var passwordError = document.getElementById("passwordError");
+
+            // Define regular expressions for password validation
+            var uppercaseRegex = /[A-Z]/;
+            var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+
+            // Check if the password meets the validation criteria
+            if (passwordInput.value.length < 8 || !uppercaseRegex.test(passwordInput.value) || !specialCharRegex.test(passwordInput.value)) {
+                passwordError.innerHTML = "Password must be at least 8 characters, include an uppercase letter, and have at least one special character";
+                return false; // Prevent form submission
+            } else {
+                passwordError.innerHTML = ""; // Clear any previous error message
+                return true; // Allow form submission
+            }
+        }
+    </script>
+
+<script>
+    function validateForm() {
+        // Get the value of the writing experience radio buttons
+        var writingExperienceValue = document.querySelector('input[name="writingExperience"]:checked').value;
+
+        // Check if the user selected "No" for writing experience
+        if (writingExperienceValue === "no") {
+            // Redirect to the next page (replace 'nextPage.html' with your actual next page URL)
+            window.location.href = 'nextPage.html';
+            return false; // Prevent form submission
+        }
+
+        if (writingExperienceValue === "yes") {
+            // Redirect to the next page (replace 'nextPage.html' with your actual next page URL)
+            window.location.href = 'writer_next.html';
+            return false; // Prevent form submission
+        }
+
+
+        // Continue with form submission if writing experience is "Yes"
+        return true;
+    }
+</script>
+</body>
+</html>
