@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    height:200%;
+    width: 40%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    position: relative;
+}
+
+form::before {
+    content: ''; /* Empty content for pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height:2px; /* Adjust the height as needed */
+    background-color: #fff; /* Set background color to match the form */
+}
+.name-container{
+    max-width:100%;
+    display: flex;
+    justify-content: space-between;
+    width: 200%;
+    border-radius:5px;
+}
+
+.check{
+    display: flex;
+    width: 10%;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+h3{
+    font-family: Arial;
+    text-align:center;
+    color:blueviolet;
+    font-weight:bold;
+}
+
+#firstName,
+#lastName,
+#username,
+#password,
+#email,
+#dob,
+#gender,
+#country,
+#religion,
+#community{
+            width:32%; /* Adjust the width as needed */
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width:35%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+select{
+    width:50%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.required::after {
+    content: ' *';
+    color: red;
+  }
+.conditional-question {
+    display: none;
+}
+
+.conditional-question-yes,
+.conditional-question-no {
+    display: none;
+}
+

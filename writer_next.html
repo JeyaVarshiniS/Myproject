@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="writer_next.css">
+</head>
+<body>
+    <form onsubmit="submitForm(event)">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+
+        <button type="button" onclick="sendOTP()">Send OTP</button>
+
+        <div id="otpSection">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="button" onclick="resendOTP()" id="resendBtn">Resend OTP</button>
+        </div>
+
+        <button type="submit" id="submitBtn" style="display: none;">Verify OTP</button>
+
+        <div id="feedback"></div>
+        <div id="errorFeedback"></div>
+    </form>
+
+    <script>
+        var resendCounter = 0;
+        var maxResendAttempts = 3;
+
+        function sendOTP() {
+            var otpSection = document.getElementById('otpSection');
+            var submitBtn = document.getElementById('submitBtn');
+            var resendBtn = document.getElementById('resendBtn');
+
+            // Simulate OTP generation and show the OTP input section
+            otpSection.style.display = 'block';
+            submitBtn.style.display = 'block';
+
+            var feedback = document.getElementById('feedback');
+            feedback.textContent = 'OTP sent!'; // Provide feedback (replace with actual logic)
+
+            // Reset resend counter when OTP is sent
+            resendCounter = 0;
+
+            // Disable resend button temporarily
+            resendBtn.disabled = true;
+
+            // Enable resend button after a timeout (simulating a cooldown period)
+            setTimeout(function() {
+                resendBtn.disabled = false;
+            }, 5000); // 5000 milliseconds (5 seconds) cooldown, adjust as needed
+        }
+
+        function resendOTP() {
+            var feedback = document.getElementById('feedback');
+            var errorFeedback = document.getElementById('errorFeedback');
+            var resendBtn = document.getElementById('resendBtn');
+
+            if (resendCounter < maxResendAttempts) {
+                // Simulate OTP resend
+                feedback.textContent = 'OTP resent!';
+                errorFeedback.textContent = ''; // Clear any previous error messages
+
+                // Increment resend counter
+                resendCounter++;
+                
+                // Disable resend button temporarily
+                resendBtn.disabled = true;
+
+                // Enable resend button after a timeout (simulating a cooldown period)
+                setTimeout(function() {
+                    resendBtn.disabled = false;
+                }, 5000); // 5000 milliseconds (5 seconds) cooldown, adjust as needed
+            } else {
+                errorFeedback.textContent = 'You have reached the maximum resend attempts.';
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            var feedback = document.getElementById('feedback');
+            var errorFeedback = document.getElementById('errorFeedback');
+
+            var otpInput = document.getElementById('otp');
+            if (otpInput.value === '123456') {
+                feedback.textContent = 'OTP verified!';
+                errorFeedback.textContent = '';
+            } else {
+                feedback.textContent = '';
+                errorFeedback.textContent = 'Invalid OTP. Please try again.';
+            }
+        }
+    </script>
+</body>
+</html>
